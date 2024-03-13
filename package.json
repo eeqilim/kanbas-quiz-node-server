@@ -1,0 +1,33 @@
+{
+  "type": "module",
+  "start": "node App.js",
+  "name": "kanbas-node-server-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiangtianh/kanbas-node-server-app.git"
+  },
+  "keywords": [
+    "Node",
+    "REST",
+    "Server",
+    "HTTP",
+    "CS5610",
+    "Web",
+    "Development"
+  ],
+  "author": "Jiangtian Han",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jiangtianh/kanbas-node-server-app/issues"
+  },
+  "homepage": "https://github.com/jiangtianh/kanbas-node-server-app#readme",
+  "dependencies": {
+    "express": "^4.18.3"
+  }
+}
