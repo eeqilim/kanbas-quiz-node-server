@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "start": "node App.js",
+  "start": "npm start",
   "name": "kanbas-node-server-app",
   "version": "1.0.0",
   "description": "",
