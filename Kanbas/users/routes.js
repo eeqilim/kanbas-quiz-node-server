@@ -59,7 +59,7 @@ export default function UserRoutes(app) {
             
             res.json(currentUser);
         } else {
-            res.sendStatus(401);
+            res.sendStatus(401).json({ message: "Invalid credentials" });
         }
     };
 
