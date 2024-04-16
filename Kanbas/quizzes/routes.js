@@ -36,4 +36,12 @@ export default function QuizRoutes(app) {
     const status = await dao.updateQuizById(quizId, updatedFields);
     res.json(status);
   });
+
+
+  // Toggle the published status of a quiz
+  app.put("/api/quizzes/:quizId/publish", async (req, res) => {
+    const { quizId } = req.params;
+    const status = await dao.togglePublishQuiz(quizId);
+    res.json(status);
+  });
 }
