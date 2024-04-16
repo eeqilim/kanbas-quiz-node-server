@@ -1,7 +1,7 @@
 import questionModel from "./model.js";
 
-export const findQuestionsByQuizId = (quizId) =>
-  questionModel.find({ quizId: quizId });
+export const findQuestionsByQuizId = (qzId) =>
+  questionModel.find({ _id: qzId });
 
 export const findQuestionById = (qsId) =>
   questionModel.findById(qsId);

@@ -1,10 +1,10 @@
 import * as dao from "./dao.js";
 
 export default function QuestionRoutes(app) {
-  // Get all questions for a quiz, tested, quizId is quizId instead of _id
-  app.get("/api/quizzes/:quizId/questions", async (req, res) => {
-    const { quizId } = req.params;
-    const questions = await dao.findQuestionsByQuizId(quizId);
+  // Get all questions for a quiz, tested
+  app.get("/api/quizzes/:qzId/questions", async (req, res) => {
+    const { qzId } = req.params;
+    const questions = await dao.findQuestionsByQuizId(qzId);
     res.json(questions);
   });
 
