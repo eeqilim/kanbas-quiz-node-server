@@ -24,6 +24,8 @@ const quizSchema = new mongoose.Schema({
     assign_to: { type: String, required: true, default: "Everyone" },
     available_from_date: { type: Date },
     available_to_date: { type: Date },
-});
+},
+{ collection: 'quizzes' }
+);
 
 export default quizSchema;
