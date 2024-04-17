@@ -1,7 +1,7 @@
 import questionModel from "./model.js";
 
-export const findQuestionsByQuizId = (qzId) =>
-  questionModel.find({ _id: qzId });
+export const findQuestionsByQuizId = (quizId) =>
+  questionModel.find({  quizId: quizId });
 
 export const findQuestionById = (qsId) =>
   questionModel.findById(qsId);
@@ -14,43 +14,39 @@ export const createQuestion = (question) => {
 
 export const deleteQuestion = (id) => questionModel.deleteOne({ _id: id });
 
-export const updateQuestion = (questionId, updatedFields) => {
-  return questionModel.updateOne({ _id: questionId }, { $set: updatedFields });
+export const updateQuestion = (qsId, updatedFields) => {
+  return questionModel.updateOne({ _id: qsId }, { $set: updatedFields });
 };
 
-export const createAnswer = async (qsId, newAnswer) => {
-  delete newAnswer._id;
-  const question = await questionModel.findById(qsId); //qsId is _id
-  question.possibleAnswers.push(newAnswer);
-  await question.save();
-  return question.possibleAnswers[question.possibleAnswers.length - 1].id; //_id or answerId depends on
-};
+// export const createSpecificAnswer = async (qsId, newAnswer) => {
+//   delete newAnswer._id;
+//   const question = await questionModel.findById(qsId); //qsId is _id
+//   question.possibleAnswers.push(newAnswer);
+//   await question.save();
+//   return question.possibleAnswers[question.possibleAnswers.length - 1];
+// };
 
-export const deleteAnswer = (qsId, aId) => {
-  return questionModel.updateOne(
-    {
-      _id: qsId,
-    },
-    {
-      $pull: {
-        possibleAnswers: {
-          _id: aId,
-        },
-      },
-    }
-  );
-};
+// export const deleteSpecificPossibleAnswer = async (qsId, answerToRemove) => {
+//     try {
+//         const result = await questionModel.updateOne(
+//             { _id: qsId },
+//             { $pull: { possibleAnswers: answerToRemove } } // Remove the specific answer
+//         );
+//         return result;
+//     } catch (error) {
+//         console.error("Failed to remove specific possible answer:", error);
+//         return null;
+//     }
+// };
 
-export const updateAnswer = (qsId, aId, updatedFields) => {
-  return questionModel.updateOne(
-    {
-      _id: qsId,
-      "possibleAnswers._id": aId,
-    },
-    {
-      $set: {
-        "possibleAnswers.$": updatedFields,
-      },
-    }
-  );
-};
+// // Update a specific possible answer by index
+// export const updateSpecificPossibleAnswerByIndex = async (qsId, answerIndex, newAnswer) => {
+//     try {
+//         const update = { $set: { [`possibleAnswers.${answerIndex}`]: newAnswer } };
+//         const result = await questionModel.updateOne({ _id: qsId }, update);
+//         return result;
+//     } catch (error) {
+//         console.error("Failed to update specific possible answer:", error);
+//         return null;
+//     }
+// };
