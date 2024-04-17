@@ -13,3 +13,10 @@ export const deleteQuizById = (quizId) => model.deleteOne( { _id: quizId });
 export const updateQuizById = (quizId, updatedFields) => {
     return model.updateOne({ _id: quizId }, { $set: updatedFields });
 }
+
+
+export const togglePublishQuiz = async (quizId) => {
+    const quiz = await model.findById(quizId);
+    return model.updateOne({ _id: quizId }, { $set: { published: !quiz.published } });
+}
+
