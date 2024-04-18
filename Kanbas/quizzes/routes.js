@@ -20,9 +20,9 @@ export default function QuizRoutes(app) {
     const courseId = req.params.courseId;
     const newQuiz = { ...req.body, course: courseId }
 
-    console.log("newQuiz: ",newQuiz)
-
     const quiz = await dao.createQuiz(newQuiz);
+
+    console.log("newQUiz returned in routes.js quiz", quiz);
     res.json(quiz);
   });
 
@@ -49,4 +49,6 @@ export default function QuizRoutes(app) {
     const status = await dao.togglePublishQuiz(quizId);
     res.json(status);
   });
+
+  
 }
