@@ -15,7 +15,8 @@ const questionSchema = new mongoose.Schema({
             required: true,
             enum: ['M', 'T', 'B']  // 'M' for Multiple Choice, 'T' for True/False, 'B' for Fill in the Blank
         },
-        quizId: { type: String, required: true }
+        quizId: { type: String, required: true },
+        previewAnswer: { type: String }
     },
     { collection: 'questions' }
 );
